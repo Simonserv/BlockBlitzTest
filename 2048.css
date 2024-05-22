@@ -184,7 +184,7 @@ body {
     border-radius: 5px;
     padding: 10px;
     align-content: center;
-    width: 30vh;
+    width: 18vh;
     height: 10vh; 
 }
 
@@ -394,7 +394,12 @@ body {
         transform: scale(0.8);
         margin-top: -8%;
     }
-
+    
+.currentScore,
+.BestScore {
+    width: 30vh;
+}
+    
     #top-center-image {
         display: block;
         margin-left: auto;
