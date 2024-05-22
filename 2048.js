@@ -32,14 +32,10 @@ function GenBoard() {
 }
 
 function toggleGrid() {
-    if (gameOverElement) {
-        gameOverElement.remove();
-    }
     var gridElement = document.getElementById('grid');
     var boardContainer = document.getElementById('board');
 
     if (gridElement.textContent == "5x5") {
-        gameOverElement.remove();
         gridElement.textContent = "4x4";
         rows = 5;
         columns = 5; score = 0;
@@ -61,10 +57,6 @@ function toggleGrid() {
 
         setGame(rows, columns);
     } else {
-        let gameOverElement = document.querySelector('.game-over');
-        if (gameOverElement) {
-            gameOverElement.remove();
-        }
         gridElement.textContent = "5x5";
         rows = 4;
         columns = 4; score = 0;
@@ -87,7 +79,6 @@ function toggleGrid() {
         setGame(rows, columns);
         boardContainer.style.width = "400px";
         boardContainer.style.height = "400px";
-        gameOverElement.innerText = " ";
     }
 }
 
@@ -321,6 +312,7 @@ function checkWin() {
     }
     return false;
 }
+
 function displayModal(type) {
     const modal = document.getElementById("modal");
     const modalContent = modal.querySelector(".modal-content");
@@ -350,8 +342,23 @@ function displayModal(type) {
     backdrop.style.filter = "blur(5px)";
 }
 
+function enableUserInteraction() {
+    document.addEventListener('keyup', handleKeyPress);
+    document.addEventListener('touchstart', handleTouchStart);
+    document.addEventListener('touchmove', handleTouchMove);
+    document.addEventListener('touchend', handleTouchEnd);
+    restart();
+}
+
 function viewBoard() {
     closeModal();
+}
+
+function disableUserInteraction() {
+    document.removeEventListener('keyup', handleKeyPress);
+    document.removeEventListener('touchstart', handleTouchStart);
+    document.removeEventListener('touchmove', handleTouchMove);
+    document.removeEventListener('touchend', handleTouchEnd);
 }
 
 function closeModal() {
@@ -425,6 +432,7 @@ function showLeaderboard() {
 function closeLeaderboardPopup() {
     var leaderboardPopup = document.getElementById("leaderboardPopup");
     leaderboardPopup.style.display = "none";
+    enableUserInteraction();
 }
 
 
@@ -442,6 +450,11 @@ function displayLeaderboard() {
         playerEntry.textContent = `Player ${index + 1}: ${entry.score}`;
         leaderboardContainer.appendChild(playerEntry);
     });
+
+    document.removeEventListener('keyup', handleKeyPress);
+    document.removeEventListener('touchstart', handleTouchStart);
+    document.removeEventListener('touchmove', handleTouchMove);
+    document.removeEventListener('touchend', handleTouchEnd);
 }
 
 function preloadImages() {

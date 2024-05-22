@@ -405,7 +405,7 @@ body {
         filter: drop-shadow(5px 5px 5px #222);
         max-width: 17rem;
     }
-     .leaderboard-button {
+    .leaderboard-button {
         position: absolute;
         top: 2%;
         right: 2%;
@@ -413,9 +413,9 @@ body {
         color: #fff;
         padding: 1% 2%;
         border-radius: 5px;
-        font-size: 6.3vw; 
+        font-size: 6.3vw;
     }
-    
+
     .leaderboard-popup {
         display: none;
         position: fixed;
@@ -425,13 +425,13 @@ body {
         z-index: 999;
         background-color: white;
         padding: 30px;
-        width: 400px; 
-        height: 300px; 
+        width: 400px;
+        height: 300px;
         border: 2px solid #FFC100;
-        border-radius: 20px; 
+        border-radius: 20px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
-    
+
     .close {
         position: absolute;
         top: 10px;
@@ -439,44 +439,106 @@ body {
         cursor: pointer;
         font-size: 20px;
     }
-    
+
     .leaderboard-popup {
-        width: 60%; 
+        width: 60%;
     }
 
     #leaderboard {
         margin-top: 20px;
-        width: 80%; 
-        max-width: 400px; 
-        margin: 0 auto; 
+        width: 80%;
+        max-width: 400px;
+        margin: 0 auto;
         border: 1px solid #FFC100;
         border-radius: 5px;
     }
-    
-    
-    
-    #leaderboard th {
-        background-color: #FFC100;
-        color: #fff;
-        padding: 10px;
-        text-align: left;
-    }
-    
-    
-    #leaderboard td {
-        padding: 8px;
-    }
-    
-    
-    #leaderboard tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
-    
-    
-    #leaderboard tr:hover {
-        background-color: #ddd;
-    }
-    
 
+
+
+        #leaderboard th {
+            background-color: #FFC100;
+            color: #fff;
+            padding: 10px;
+            text-align: left;
+        }
+
+
+        #leaderboard td {
+            padding: 8px;
+        }
+
+
+        #leaderboard tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+
+        #leaderboard tr:hover {
+            background-color: #ddd;
+        }
+
+
+    .modal-content {
+        width: 90%;
+    }
 
 }
+
+.modal {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(0);
+    transition: backdrop-filter 0.3s ease;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 30%;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+    .modal-buttons button {
+        margin: 0 10px;
+        padding: 10px 20px;
+        background-color: #FFC100;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .modal-buttons button:hover {
+            background-color: #FF6500;
+        }
