@@ -323,7 +323,7 @@ function displayModal(type) {
             <h2>Congratulations!</h2>
             <p>You've won the game!</p>
             <div class="modal-buttons">
-                <button onclick="restart()">Restart</button>
+                <button onclick="restartGame()">Restart</button>
                 <button onclick="continueGame()">Continue</button>
             </div>
         `;
@@ -332,7 +332,7 @@ function displayModal(type) {
             <h2>Game Over!</h2>
             <p>Your score: ${score}</p>
             <div class="modal-buttons">
-                <button onclick="restart()">Restart</button>
+                <button onclick="restartGame()">Restart</button>
                 <button onclick="viewBoard()">View Board</button>
             </div>
         `;
@@ -342,12 +342,22 @@ function displayModal(type) {
     backdrop.style.filter = "blur(5px)";
 }
 
+function restartGame() {
+    restart();
+    closeModal();
+    enableUserInteraction();
+}
+
+function continueGame() {
+    closeModal();
+    enableUserInteraction();
+}
+
 function enableUserInteraction() {
     document.addEventListener('keyup', handleKeyPress);
     document.addEventListener('touchstart', handleTouchStart);
     document.addEventListener('touchmove', handleTouchMove);
     document.addEventListener('touchend', handleTouchEnd);
-    restart();
 }
 
 function viewBoard() {
@@ -410,14 +420,7 @@ function displayGameOver() {
             document.getElementById("bestscore").innerText = bestscore;
         }
 
-        const existingTrialIndex = bestScores.findIndex(entry => entry.trial === trials);
-        if (existingTrialIndex !== -1) {
-            if (score > bestScores[existingTrialIndex].score) {
-                bestScores[existingTrialIndex].score = score;
-            }
-        } else {
-            bestScores.push({ score: score, trial: trials });
-        }
+        bestScores.push({ score: score, trial: trials });
 
         displayLeaderboard();
     }
@@ -435,27 +438,53 @@ function closeLeaderboardPopup() {
     enableUserInteraction();
 }
 
-
 function displayLeaderboard() {
     var leaderboardContainer = document.getElementById("leaderboard");
-    
-    
+
+   
     bestScores.sort((a, b) => b.score - a.score);
-    
-    
+
+   
     leaderboardContainer.innerHTML = "";
 
+   
     bestScores.forEach((entry, index) => {
+   
         var playerEntry = document.createElement("div");
-        playerEntry.textContent = `Player ${index + 1}: ${entry.score}`;
+        
+   
+        playerEntry.style.padding = "10px"; 
+        playerEntry.style.fontSize = "16px";
+        playerEntry.style.color = "#333"; 
+        playerEntry.style.borderBottom = "1px solid #ccc"; 
+
+        
+        if (index % 2 === 0) {
+            playerEntry.style.backgroundColor = "#f9f9f9"; 
+        }
+
+        
+        if (index === 0) {
+            playerEntry.style.fontWeight = "bold"; 
+        }
+
+        
+        var randomNumbers = Math.floor(1000 + Math.random() * 9000); 
+        playerEntry.textContent = `Guest${randomNumbers}: ${entry.score}`;
+
+        
         leaderboardContainer.appendChild(playerEntry);
     });
 
+    
     document.removeEventListener('keyup', handleKeyPress);
     document.removeEventListener('touchstart', handleTouchStart);
     document.removeEventListener('touchmove', handleTouchMove);
     document.removeEventListener('touchend', handleTouchEnd);
 }
+
+
+
 
 function preloadImages() {
     const imageUrls = [

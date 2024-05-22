@@ -47,8 +47,16 @@ body {
     color: #fff;
     padding: 1% 2%;
     border-radius: 5px;
-    font-size: 3vw; 
+    font-size: 3vw;
+    background-color: #401F71; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    transition: background-color 0.3s ease;
 }
+
+.leaderboard-button:hover {
+    background-color: #FFD54F; 
+}
+
 
 .leaderboard-popup {
     display: none;
@@ -57,12 +65,12 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 999;
-    background-color: white;
+    background-color: #fafafa;
     padding: 30px;
-    width: 600px; 
-    height: 300px; 
+    width: 600px;
+    height: 300px;
     border: 2px solid #FFC100;
-    border-radius: 20px; 
+    border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -72,40 +80,50 @@ body {
     right: 10px;
     cursor: pointer;
     font-size: 20px;
+    color: #FFC100;
 }
 
 
 #leaderboard {
     margin-top: 20px;
-    width: 90%; 
-    max-width: 400px;
+    width: 100%; 
+    max-width: 600px;
     margin: 0 auto;
+    border-collapse: collapse;
     border: 1px solid #FFC100;
-    border-radius: 5px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
-
 
 #leaderboard th {
     background-color: #FFC100;
     color: #fff;
-    padding: 10px;
+    padding: 12px 16px;
     text-align: left;
+    font-weight: bold;
 }
-
 
 #leaderboard td {
-    padding: 8px;
+    padding: 10px 16px;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
 }
 
+#leaderboard tr:last-child td {
+    border-bottom: none;
+}
 
 #leaderboard tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #f9f9f9;
 }
 
-
 #leaderboard tr:hover {
-    background-color: #ddd;
+    background-color: #f5f5f5;
+}
+
+#leaderboard tr:hover td {
+    color: #FFC100;
 }
 
 
@@ -390,25 +408,25 @@ body {
 }
 
 @media (max-width: 480px) {
+
     .container {
         transform: scale(0.8);
-        margin-top: -8%;
+        margin-top: -15%;
     }
-    
-.currentScore,
-.BestScore {
-    width: 20vh;
-}
-    
+
+    .currentScore,
+    .BestScore {
+        width: 20vh;
+    }
+
     #top-center-image {
         display: block;
         margin-left: auto;
         margin-right: auto;
-        width: 18rem;
+        width: 23rem;
         height: auto;
         -webkit-filter: drop-shadow(5px 5px 5px #222);
         filter: drop-shadow(5px 5px 5px #222);
-        max-width: 17rem;
     }
     .leaderboard-button {
         position: absolute;
