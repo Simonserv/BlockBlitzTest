@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
     <title>Block Blitz</title>
     <link rel="stylesheet" href="2048.css">
     <link rel="icon" type="image/x-icon" href="blockblitz logo.ico">
@@ -11,18 +10,18 @@
 </head>
 
 <body>
-    <video autoplay muted loop id="backgroundVideo"> <source src="Untitleddesign.mp4" type="video/mp4"></video>
-    <img src="Header.png" alt="Description of Image" id="top-center-image">
+    <video autoplay muted loop id="backgroundVideo"> <source src="Untitled Design.mp4" type="video/mp4"></video>
     <div class="container">
+        <img src="Header.png" alt="Description of Image" id="top-center-image">
         <div class="header">
             <div onclick="showLeaderboard()" class="leaderboard-button">🏆</div>
             <div class="menu">
                 <div class="scores-container">
                     <div class="currentScore">
-                        <h2><br>SCORE <br /><br><span id="score">0</span></h2>
+                        <h2>SCORE <br><span id="score">0</span></h2>
                     </div>
                     <div class="BestScore">
-                        <h2><br>BEST <br /><br><span id="bestscore">0</span></h2>
+                        <h2>BEST <br><span id="bestscore">0</span></h2>
                     </div>
                 </div>
             </div>
@@ -45,9 +44,10 @@
         <span class="close" onclick="closeLeaderboardPopup()">&times;</span>
         <div id="leaderboard"></div>
     </div>
+
     <div id="modal" class="modal">
-        <div class="modal-backdrop"></div>
-        <div class="modal-content"></div>
-    </div>
+    <div class="modal-backdrop"></div>
+    <div class="modal-content"></div>
+</div>
 </body>
 </html>
